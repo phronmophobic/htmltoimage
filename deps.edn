@@ -1,12 +1,14 @@
 {:paths ["src" "resources"]
  :deps {org.clojure/clojure {:mvn/version "1.10.2"}
-        com.phronemophobic/clj-cef {:local/root "../../../clj-cef"}}
+        com.phronemophobic/clj-cef {:mvn/version "0.9.4"}}
  :aliases
  {:run-m {:main-opts ["-m" "clj-cef.htmltoimage"]}
   :run-x {:ns-default clj-cef.htmltoimage
           :exec-fn -main
           ;;:exec-args {}
           }
+  :download-cef {:extra-deps {com.phronemophobic/clirun {:mvn/version "1.0.0"}}
+                 :main-opts ["-m" "com.phronemophobic.clirun" "com.phronemophobic.cef/download-and-extract-framework"]}
   :test {:extra-paths ["test"]
          :extra-deps {org.clojure/test.check {:mvn/version "1.1.0"}}}
   :runner
